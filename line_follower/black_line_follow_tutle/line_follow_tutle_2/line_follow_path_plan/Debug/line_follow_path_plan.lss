@@ -1,0 +1,528 @@
+
+line_follow_path_plan.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  0000035e  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000002ea  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000006  00800100  00800100  0000035e  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  0000035e  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000390  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000000a0  00000000  00000000  000003d0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000b9f  00000000  00000000  00000470  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000006f2  00000000  00000000  0000100f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000609  00000000  00000000  00001701  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000124  00000000  00000000  00001d0c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000510  00000000  00000000  00001e30  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    0000027e  00000000  00000000  00002340  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000000c0  00000000  00000000  000025be  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+   8:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+   c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  10:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  14:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  18:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  1c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  20:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  24:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  28:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  2c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  30:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  34:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  38:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  3c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  40:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  44:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  48:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  4c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  50:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  54:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  58:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  5c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  60:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  64:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_clear_bss>:
+  74:	21 e0       	ldi	r18, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	01 c0       	rjmp	.+2      	; 0x7e <.do_clear_bss_start>
+
+0000007c <.do_clear_bss_loop>:
+  7c:	1d 92       	st	X+, r1
+
+0000007e <.do_clear_bss_start>:
+  7e:	a6 30       	cpi	r26, 0x06	; 6
+  80:	b2 07       	cpc	r27, r18
+  82:	e1 f7       	brne	.-8      	; 0x7c <.do_clear_bss_loop>
+  84:	0e 94 69 01 	call	0x2d2	; 0x2d2 <main>
+  88:	0c 94 73 01 	jmp	0x2e6	; 0x2e6 <_exit>
+
+0000008c <__bad_interrupt>:
+  8c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000090 <line_sensors_pin_config>:
+ * @param[in]  right_motor_pwm  Right motor speed 0 to 255
+ */
+void set_duty_cycle(unsigned char left_motor_pwm, unsigned char right_motor_pwm)
+{
+	OCR2B_reg = left_motor_pwm;
+	OCR0B_reg = right_motor_pwm;
+  90:	84 b1       	in	r24, 0x04	; 4
+  92:	87 7e       	andi	r24, 0xE7	; 231
+  94:	84 b9       	out	0x04, r24	; 4
+  96:	85 b1       	in	r24, 0x05	; 5
+  98:	88 61       	ori	r24, 0x18	; 24
+  9a:	85 b9       	out	0x05, r24	; 5
+  9c:	38 98       	cbi	0x07, 0	; 7
+  9e:	40 9a       	sbi	0x08, 0	; 8
+  a0:	08 95       	ret
+
+000000a2 <motors_pin_config>:
+  a2:	8a b1       	in	r24, 0x0a	; 10
+  a4:	84 6d       	ori	r24, 0xD4	; 212
+  a6:	8a b9       	out	0x0a, r24	; 10
+  a8:	8b b1       	in	r24, 0x0b	; 11
+  aa:	8b 72       	andi	r24, 0x2B	; 43
+  ac:	8b b9       	out	0x0b, r24	; 11
+  ae:	08 95       	ret
+
+000000b0 <pwm_pin_config>:
+  b0:	8a b1       	in	r24, 0x0a	; 10
+  b2:	88 62       	ori	r24, 0x28	; 40
+  b4:	8a b9       	out	0x0a, r24	; 10
+  b6:	8b b1       	in	r24, 0x0b	; 11
+  b8:	88 62       	ori	r24, 0x28	; 40
+  ba:	8b b9       	out	0x0b, r24	; 11
+  bc:	08 95       	ret
+
+000000be <motors_move_forward>:
+  be:	8b b1       	in	r24, 0x0b	; 11
+  c0:	8b 72       	andi	r24, 0x2B	; 43
+  c2:	8b b9       	out	0x0b, r24	; 11
+  c4:	8b b1       	in	r24, 0x0b	; 11
+  c6:	84 64       	ori	r24, 0x44	; 68
+  c8:	8b b9       	out	0x0b, r24	; 11
+  ca:	08 95       	ret
+
+000000cc <motors_move_backward>:
+  cc:	8b b1       	in	r24, 0x0b	; 11
+  ce:	8b 72       	andi	r24, 0x2B	; 43
+  d0:	8b b9       	out	0x0b, r24	; 11
+  d2:	8b b1       	in	r24, 0x0b	; 11
+  d4:	80 69       	ori	r24, 0x90	; 144
+  d6:	8b b9       	out	0x0b, r24	; 11
+  d8:	08 95       	ret
+
+000000da <soft_left>:
+  da:	8b b1       	in	r24, 0x0b	; 11
+  dc:	8b 7a       	andi	r24, 0xAB	; 171
+  de:	8b b9       	out	0x0b, r24	; 11
+  e0:	5e 9a       	sbi	0x0b, 6	; 11
+  e2:	08 95       	ret
+
+000000e4 <soft_right>:
+  e4:	8b b1       	in	r24, 0x0b	; 11
+  e6:	8f 72       	andi	r24, 0x2F	; 47
+  e8:	8b b9       	out	0x0b, r24	; 11
+  ea:	5a 9a       	sbi	0x0b, 2	; 11
+  ec:	08 95       	ret
+
+000000ee <stop>:
+  ee:	8b b1       	in	r24, 0x0b	; 11
+  f0:	8b 72       	andi	r24, 0x2B	; 43
+  f2:	8b b9       	out	0x0b, r24	; 11
+  f4:	08 95       	ret
+
+000000f6 <timer_pwm_init>:
+  f6:	18 bc       	out	0x28, r1	; 40
+  f8:	10 92 b4 00 	sts	0x00B4, r1	; 0x8000b4 <__DATA_REGION_ORIGIN__+0x54>
+  fc:	84 b5       	in	r24, 0x24	; 36
+  fe:	8f 7e       	andi	r24, 0xEF	; 239
+ 100:	80 62       	ori	r24, 0x20	; 32
+ 102:	84 bd       	out	0x24, r24	; 36
+ 104:	e0 eb       	ldi	r30, 0xB0	; 176
+ 106:	f0 e0       	ldi	r31, 0x00	; 0
+ 108:	80 81       	ld	r24, Z
+ 10a:	8f 7e       	andi	r24, 0xEF	; 239
+ 10c:	80 62       	ori	r24, 0x20	; 32
+ 10e:	80 83       	st	Z, r24
+ 110:	84 b5       	in	r24, 0x24	; 36
+ 112:	83 60       	ori	r24, 0x03	; 3
+ 114:	84 bd       	out	0x24, r24	; 36
+ 116:	85 b5       	in	r24, 0x25	; 37
+ 118:	87 7f       	andi	r24, 0xF7	; 247
+ 11a:	85 bd       	out	0x25, r24	; 37
+ 11c:	80 81       	ld	r24, Z
+ 11e:	83 60       	ori	r24, 0x03	; 3
+ 120:	80 83       	st	Z, r24
+ 122:	e1 eb       	ldi	r30, 0xB1	; 177
+ 124:	f0 e0       	ldi	r31, 0x00	; 0
+ 126:	80 81       	ld	r24, Z
+ 128:	87 7f       	andi	r24, 0xF7	; 247
+ 12a:	80 83       	st	Z, r24
+ 12c:	85 b5       	in	r24, 0x25	; 37
+ 12e:	8b 7f       	andi	r24, 0xFB	; 251
+ 130:	83 60       	ori	r24, 0x03	; 3
+ 132:	85 bd       	out	0x25, r24	; 37
+ 134:	80 81       	ld	r24, Z
+ 136:	8c 7f       	andi	r24, 0xFC	; 252
+ 138:	84 60       	ori	r24, 0x04	; 4
+ 13a:	80 83       	st	Z, r24
+ 13c:	08 95       	ret
+
+0000013e <read_line_sensor>:
+ */
+void read_line_sensor(void)
+{
+	// Update the left_sensor, center_sensor and right_sensor variables
+	// by reading the corresponding sensor pin from PIN register
+	left_sensor   = (left_center_wl_pin_reg & (1<<left_wl_sensor_pin)) == (1<<left_wl_sensor_pin) ? 1:0;
+ 13e:	23 b1       	in	r18, 0x03	; 3
+ 140:	23 fb       	bst	r18, 3
+ 142:	22 27       	eor	r18, r18
+ 144:	20 f9       	bld	r18, 0
+ 146:	20 93 05 01 	sts	0x0105, r18	; 0x800105 <left_sensor>
+	center_sensor = (left_center_wl_pin_reg & (1<<center_wl_sensor_pin))== (1<<center_wl_sensor_pin) ? 1:0;
+ 14a:	93 b1       	in	r25, 0x03	; 3
+ 14c:	92 95       	swap	r25
+ 14e:	91 70       	andi	r25, 0x01	; 1
+ 150:	90 93 04 01 	sts	0x0104, r25	; 0x800104 <center_sensor>
+	right_sensor  = (right_wl_pin_reg	   & (1<<right_wl_sensor_pin)) == (1<<right_wl_sensor_pin) ? 1:0;
+ 154:	86 b1       	in	r24, 0x06	; 6
+ 156:	81 70       	andi	r24, 0x01	; 1
+ 158:	80 93 03 01 	sts	0x0103, r24	; 0x800103 <right_sensor>
+	
+	// Update the boolean type left_status, center_status and right_status variables based on
+	// the data of left_sensor, center_sensor and right_sensor variables to either true (T) or false (F)
+	// true (T) = if the sensor is on black line
+	// false (F) = if the sensor is on white surface
+	left_status   = left_sensor==1 ? true :false ;
+ 15c:	20 93 02 01 	sts	0x0102, r18	; 0x800102 <left_status>
+	center_status = center_sensor==1 ? true :false;
+ 160:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <center_status>
+	right_status  = right_sensor==1 ? true :false;
+ 164:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <_edata>
+ 168:	08 95       	ret
+
+0000016a <reach_to_goal>:
+ * @param[in]  left_motor_pwm   Left motor speed 0 to 255
+ * @param[in]  right_motor_pwm  Right motor speed 0 to 255
+ */
+void set_duty_cycle(unsigned char left_motor_pwm, unsigned char right_motor_pwm)
+{
+	OCR2B_reg = left_motor_pwm;
+ 16a:	c4 eb       	ldi	r28, 0xB4	; 180
+ 16c:	d0 e0       	ldi	r29, 0x00	; 0
+ 16e:	04 e6       	ldi	r16, 0x64	; 100
+ 170:	18 ec       	ldi	r17, 0xC8	; 200
+ * @brief      Function to execute the logic for path planning and line following making the robot traverse from START to GOAL based on the path input array
+ */
+void reach_to_goal(void)
+{
+		    while(1){
+			     motors_move_forward();
+ 172:	0e 94 5f 00 	call	0xbe	; 0xbe <motors_move_forward>
+			     read_line_sensor();
+ 176:	0e 94 9f 00 	call	0x13e	; 0x13e <read_line_sensor>
+			     if(!left_status && center_status && !right_status)		//0,1,0
+ 17a:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <left_status>
+ 17e:	81 11       	cpse	r24, r1
+ 180:	1a c0       	rjmp	.+52     	; 0x1b6 <reach_to_goal+0x4c>
+ 182:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <center_status>
+ 186:	88 23       	and	r24, r24
+ 188:	09 f4       	brne	.+2      	; 0x18c <reach_to_goal+0x22>
+ 18a:	47 c0       	rjmp	.+142    	; 0x21a <reach_to_goal+0xb0>
+ 18c:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
+ 190:	81 11       	cpse	r24, r1
+ 192:	43 c0       	rjmp	.+134    	; 0x21a <reach_to_goal+0xb0>
+			     {
+				     motors_move_forward();
+ 194:	0e 94 5f 00 	call	0xbe	; 0xbe <motors_move_forward>
+ * @param[in]  left_motor_pwm   Left motor speed 0 to 255
+ * @param[in]  right_motor_pwm  Right motor speed 0 to 255
+ */
+void set_duty_cycle(unsigned char left_motor_pwm, unsigned char right_motor_pwm)
+{
+	OCR2B_reg = left_motor_pwm;
+ 198:	18 83       	st	Y, r17
+	OCR0B_reg = right_motor_pwm;
+ 19a:	18 bd       	out	0x28, r17	; 40
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 19c:	2f ef       	ldi	r18, 0xFF	; 255
+ 19e:	81 ee       	ldi	r24, 0xE1	; 225
+ 1a0:	94 e0       	ldi	r25, 0x04	; 4
+ 1a2:	21 50       	subi	r18, 0x01	; 1
+ 1a4:	80 40       	sbci	r24, 0x00	; 0
+ 1a6:	90 40       	sbci	r25, 0x00	; 0
+ 1a8:	e1 f7       	brne	.-8      	; 0x1a2 <reach_to_goal+0x38>
+ 1aa:	00 c0       	rjmp	.+0      	; 0x1ac <reach_to_goal+0x42>
+ 1ac:	00 00       	nop
+				     motors_move_forward();
+				     set_duty_cycle(200,200);
+				     _delay_ms(100);
+				     
+			     }
+			     if(left_status && !center_status && !right_status)		//1,0,0
+ 1ae:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <left_status>
+ 1b2:	88 23       	and	r24, r24
+ 1b4:	91 f1       	breq	.+100    	; 0x21a <reach_to_goal+0xb0>
+ 1b6:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <center_status>
+ 1ba:	81 11       	cpse	r24, r1
+ 1bc:	19 c0       	rjmp	.+50     	; 0x1f0 <reach_to_goal+0x86>
+ 1be:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
+ 1c2:	81 11       	cpse	r24, r1
+ 1c4:	3f c0       	rjmp	.+126    	; 0x244 <reach_to_goal+0xda>
+			     {
+				     soft_left();
+ 1c6:	0e 94 6d 00 	call	0xda	; 0xda <soft_left>
+ * @param[in]  left_motor_pwm   Left motor speed 0 to 255
+ * @param[in]  right_motor_pwm  Right motor speed 0 to 255
+ */
+void set_duty_cycle(unsigned char left_motor_pwm, unsigned char right_motor_pwm)
+{
+	OCR2B_reg = left_motor_pwm;
+ 1ca:	18 82       	st	Y, r1
+	OCR0B_reg = right_motor_pwm;
+ 1cc:	18 bd       	out	0x28, r17	; 40
+ 1ce:	2f ef       	ldi	r18, 0xFF	; 255
+ 1d0:	80 e7       	ldi	r24, 0x70	; 112
+ 1d2:	92 e0       	ldi	r25, 0x02	; 2
+ 1d4:	21 50       	subi	r18, 0x01	; 1
+ 1d6:	80 40       	sbci	r24, 0x00	; 0
+ 1d8:	90 40       	sbci	r25, 0x00	; 0
+ 1da:	e1 f7       	brne	.-8      	; 0x1d4 <reach_to_goal+0x6a>
+ 1dc:	00 c0       	rjmp	.+0      	; 0x1de <reach_to_goal+0x74>
+ 1de:	00 00       	nop
+				     soft_left();
+				     set_duty_cycle(0,200);
+				     _delay_ms(50);
+				     
+			     }
+			     if(left_status && center_status && !right_status)		//1,1,0
+ 1e0:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <left_status>
+ 1e4:	88 23       	and	r24, r24
+ 1e6:	c9 f0       	breq	.+50     	; 0x21a <reach_to_goal+0xb0>
+ 1e8:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <center_status>
+ 1ec:	88 23       	and	r24, r24
+ 1ee:	51 f1       	breq	.+84     	; 0x244 <reach_to_goal+0xda>
+ 1f0:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
+ 1f4:	81 11       	cpse	r24, r1
+ 1f6:	68 c0       	rjmp	.+208    	; 0x2c8 <reach_to_goal+0x15e>
+			     {
+				     soft_left();
+ 1f8:	0e 94 6d 00 	call	0xda	; 0xda <soft_left>
+ * @param[in]  left_motor_pwm   Left motor speed 0 to 255
+ * @param[in]  right_motor_pwm  Right motor speed 0 to 255
+ */
+void set_duty_cycle(unsigned char left_motor_pwm, unsigned char right_motor_pwm)
+{
+	OCR2B_reg = left_motor_pwm;
+ 1fc:	18 82       	st	Y, r1
+	OCR0B_reg = right_motor_pwm;
+ 1fe:	18 bd       	out	0x28, r17	; 40
+ 200:	2f ef       	ldi	r18, 0xFF	; 255
+ 202:	80 e7       	ldi	r24, 0x70	; 112
+ 204:	92 e0       	ldi	r25, 0x02	; 2
+ 206:	21 50       	subi	r18, 0x01	; 1
+ 208:	80 40       	sbci	r24, 0x00	; 0
+ 20a:	90 40       	sbci	r25, 0x00	; 0
+ 20c:	e1 f7       	brne	.-8      	; 0x206 <reach_to_goal+0x9c>
+ 20e:	00 c0       	rjmp	.+0      	; 0x210 <reach_to_goal+0xa6>
+ 210:	00 00       	nop
+				     soft_left();
+				     set_duty_cycle(0,200);
+				     _delay_ms(50);
+				     
+			     }
+			     if(!left_status && !center_status && right_status)		//0,0,1
+ 212:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <left_status>
+ 216:	81 11       	cpse	r24, r1
+ 218:	4a c0       	rjmp	.+148    	; 0x2ae <reach_to_goal+0x144>
+ 21a:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <center_status>
+ 21e:	81 11       	cpse	r24, r1
+ 220:	19 c0       	rjmp	.+50     	; 0x254 <reach_to_goal+0xea>
+ 222:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
+ 226:	88 23       	and	r24, r24
+ 228:	59 f1       	breq	.+86     	; 0x280 <reach_to_goal+0x116>
+			     {
+				     soft_right();
+ 22a:	0e 94 72 00 	call	0xe4	; 0xe4 <soft_right>
+ * @param[in]  left_motor_pwm   Left motor speed 0 to 255
+ * @param[in]  right_motor_pwm  Right motor speed 0 to 255
+ */
+void set_duty_cycle(unsigned char left_motor_pwm, unsigned char right_motor_pwm)
+{
+	OCR2B_reg = left_motor_pwm;
+ 22e:	18 83       	st	Y, r17
+	OCR0B_reg = right_motor_pwm;
+ 230:	18 bc       	out	0x28, r1	; 40
+ 232:	2f ef       	ldi	r18, 0xFF	; 255
+ 234:	80 e7       	ldi	r24, 0x70	; 112
+ 236:	92 e0       	ldi	r25, 0x02	; 2
+ 238:	21 50       	subi	r18, 0x01	; 1
+ 23a:	80 40       	sbci	r24, 0x00	; 0
+ 23c:	90 40       	sbci	r25, 0x00	; 0
+ 23e:	e1 f7       	brne	.-8      	; 0x238 <reach_to_goal+0xce>
+ 240:	00 c0       	rjmp	.+0      	; 0x242 <reach_to_goal+0xd8>
+ 242:	00 00       	nop
+				     set_duty_cycle(200,0);
+				     _delay_ms(50);
+				     
+			     }
+			     
+			     if(!left_status && center_status && right_status)		//0,1,1
+ 244:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <left_status>
+ 248:	81 11       	cpse	r24, r1
+ 24a:	31 c0       	rjmp	.+98     	; 0x2ae <reach_to_goal+0x144>
+ 24c:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <center_status>
+ 250:	88 23       	and	r24, r24
+ 252:	d1 f0       	breq	.+52     	; 0x288 <reach_to_goal+0x11e>
+ 254:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
+ 258:	88 23       	and	r24, r24
+ 25a:	09 f4       	brne	.+2      	; 0x25e <reach_to_goal+0xf4>
+ 25c:	8a cf       	rjmp	.-236    	; 0x172 <reach_to_goal+0x8>
+			     {
+				     soft_right();
+ 25e:	0e 94 72 00 	call	0xe4	; 0xe4 <soft_right>
+ * @param[in]  left_motor_pwm   Left motor speed 0 to 255
+ * @param[in]  right_motor_pwm  Right motor speed 0 to 255
+ */
+void set_duty_cycle(unsigned char left_motor_pwm, unsigned char right_motor_pwm)
+{
+	OCR2B_reg = left_motor_pwm;
+ 262:	18 83       	st	Y, r17
+	OCR0B_reg = right_motor_pwm;
+ 264:	18 bc       	out	0x28, r1	; 40
+ 266:	2f ef       	ldi	r18, 0xFF	; 255
+ 268:	80 e7       	ldi	r24, 0x70	; 112
+ 26a:	92 e0       	ldi	r25, 0x02	; 2
+ 26c:	21 50       	subi	r18, 0x01	; 1
+ 26e:	80 40       	sbci	r24, 0x00	; 0
+ 270:	90 40       	sbci	r25, 0x00	; 0
+ 272:	e1 f7       	brne	.-8      	; 0x26c <reach_to_goal+0x102>
+ 274:	00 c0       	rjmp	.+0      	; 0x276 <reach_to_goal+0x10c>
+ 276:	00 00       	nop
+				     soft_right();
+				     set_duty_cycle(200,0);
+				     _delay_ms(50);
+				     
+			     }
+			     if (!left_status && !center_status && !right_status)	//0,0,0
+ 278:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <left_status>
+ 27c:	81 11       	cpse	r24, r1
+ 27e:	17 c0       	rjmp	.+46     	; 0x2ae <reach_to_goal+0x144>
+ 280:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <center_status>
+ 284:	81 11       	cpse	r24, r1
+ 286:	75 cf       	rjmp	.-278    	; 0x172 <reach_to_goal+0x8>
+ 288:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
+ 28c:	81 11       	cpse	r24, r1
+ 28e:	71 cf       	rjmp	.-286    	; 0x172 <reach_to_goal+0x8>
+			     {
+				     motors_move_backward();
+ 290:	0e 94 66 00 	call	0xcc	; 0xcc <motors_move_backward>
+ * @param[in]  left_motor_pwm   Left motor speed 0 to 255
+ * @param[in]  right_motor_pwm  Right motor speed 0 to 255
+ */
+void set_duty_cycle(unsigned char left_motor_pwm, unsigned char right_motor_pwm)
+{
+	OCR2B_reg = left_motor_pwm;
+ 294:	08 83       	st	Y, r16
+	OCR0B_reg = right_motor_pwm;
+ 296:	08 bd       	out	0x28, r16	; 40
+ 298:	8f e1       	ldi	r24, 0x1F	; 31
+ 29a:	9e e4       	ldi	r25, 0x4E	; 78
+ 29c:	01 97       	sbiw	r24, 0x01	; 1
+ 29e:	f1 f7       	brne	.-4      	; 0x29c <reach_to_goal+0x132>
+ 2a0:	00 c0       	rjmp	.+0      	; 0x2a2 <reach_to_goal+0x138>
+ 2a2:	00 00       	nop
+				     set_duty_cycle(100,100);
+				     _delay_ms(5);
+				     //stop();
+				     
+			     }
+				if(left_status && center_status && right_status)		//1,1,1
+ 2a4:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <left_status>
+ 2a8:	88 23       	and	r24, r24
+ 2aa:	09 f4       	brne	.+2      	; 0x2ae <reach_to_goal+0x144>
+ 2ac:	62 cf       	rjmp	.-316    	; 0x172 <reach_to_goal+0x8>
+ 2ae:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <center_status>
+ 2b2:	88 23       	and	r24, r24
+ 2b4:	09 f4       	brne	.+2      	; 0x2b8 <reach_to_goal+0x14e>
+ 2b6:	5d cf       	rjmp	.-326    	; 0x172 <reach_to_goal+0x8>
+ 2b8:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
+ 2bc:	88 23       	and	r24, r24
+ 2be:	09 f4       	brne	.+2      	; 0x2c2 <reach_to_goal+0x158>
+ 2c0:	58 cf       	rjmp	.-336    	; 0x172 <reach_to_goal+0x8>
+				{
+				    stop();
+ 2c2:	0e 94 77 00 	call	0xee	; 0xee <stop>
+ 2c6:	55 cf       	rjmp	.-342    	; 0x172 <reach_to_goal+0x8>
+				     set_duty_cycle(200,0);
+				     _delay_ms(50);
+				     
+			     }
+			     
+			     if(!left_status && center_status && right_status)		//0,1,1
+ 2c8:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <left_status>
+ 2cc:	81 11       	cpse	r24, r1
+ 2ce:	ea cf       	rjmp	.-44     	; 0x2a4 <reach_to_goal+0x13a>
+ 2d0:	c1 cf       	rjmp	.-126    	; 0x254 <reach_to_goal+0xea>
+
+000002d2 <main>:
+ *
+ * @return     0
+ */
+int main(void)
+{
+	line_sensors_pin_config();		// Initialize 3 line sensor pins
+ 2d2:	0e 94 48 00 	call	0x90	; 0x90 <line_sensors_pin_config>
+	motors_pin_config();			// Initialize direction pins of motors
+ 2d6:	0e 94 51 00 	call	0xa2	; 0xa2 <motors_pin_config>
+	pwm_pin_config();				// Initialize left and right channel pins of motors
+ 2da:	0e 94 58 00 	call	0xb0	; 0xb0 <pwm_pin_config>
+	timer_pwm_init();				// Initialize Timer 0 and 2 for PWM
+ 2de:	0e 94 7b 00 	call	0xf6	; 0xf6 <timer_pwm_init>
+	
+	 
+	 //B_W_B();						//follow white line
+	
+	reach_to_goal();				//  follow black line
+ 2e2:	0e 94 b5 00 	call	0x16a	; 0x16a <reach_to_goal>
+
+000002e6 <_exit>:
+ 2e6:	f8 94       	cli
+
+000002e8 <__stop_program>:
+ 2e8:	ff cf       	rjmp	.-2      	; 0x2e8 <__stop_program>
