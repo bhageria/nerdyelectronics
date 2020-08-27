@@ -71,7 +71,7 @@ int storeDataToSD(uint8_t *temperaturePtr, RtcDateTime now)
       dataFile.print("\"");
       dataFile.println(',');
       dataFile.print("\"Status\":");
-      dataFile.println(*data);   
+      dataFile.println(*temperaturePtr);   
       dataFile.println("}");
       //*previousLevelPTR = *currentLevelPTR;
 

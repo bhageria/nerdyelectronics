@@ -1,22 +1,14 @@
 /*
-  
-   SD card attached to SPI bus as follows:
- ** MOSI - pin 11
- ** MISO - pin 12
- ** CLK - pin 13
- ** CS - pin 4 (for MKRZero SD: SDCARD_SS_PIN)
+This project is to do an analysis of the effect on room temperature because of white paint on roof
 
-/******* 
- *  Version Control
- *  25-Feb-2020  Srinivas
- *  -------------------------
- *  main.h
- *  CALLED LoadMotorState in main - setup to power mtr after power cut
- *  CALLED loadLocalMotorState in main - loop to power mtr after power cut
- *  --------------------------
- *  motor_control.h
- *  ADDED eeprom.h to write and read motor sts
- *  ADDED checkMotorState, LoadMotorState, loadLocalMotorState to satisy mtr power state after powercut 
+There will be 3 temperature sensors - 
+1) Environment
+2) Below the ceiling without white paint
+3) Below the ceiling with white paint
+
+All three sensors will be read simultaneously. Expectation is to see the value of sensor below the ehite topping to be less than the other two.
+
+Let's see
 *******/
 
 #include"main.h"
@@ -74,4 +66,3 @@ void readTemperature(uint8_t *tempArrPtr)
     Serial.println("");
   #endif
  }
-
