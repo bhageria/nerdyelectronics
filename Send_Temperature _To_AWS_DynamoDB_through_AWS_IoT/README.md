@@ -4,11 +4,11 @@ Tutorial by https://nerdyelectronics.com:
 
 ## Block Diagram:  
 
-![alt text](https://github.com/bhageria/nerdyelectronics/blob/master/Send_Temperature%20_To_AWS_DynamoDB_through_AWS_IoT/images/AWS_IoT_Temperature_circuit.png)
+![alt text](https://github.com/bhageria/nerdyelectronics/blob/master/Send_Temperature%20_To_AWS_DynamoDB_through_AWS_IoT/images/read_temperature%20in%20AWS%20DynamoDB%20block-diagram.jpg)
 
 ## Circuit Diagram:  
 
-![alt text](https://github.com/bhageria/nerdyelectronics/blob/master/Send_Temperature%20_To_AWS_DynamoDB_through_AWS_IoT/images/block%20diagram.jpg)
+![alt text](https://github.com/bhageria/nerdyelectronics/blob/master/Send_Temperature%20_To_AWS_DynamoDB_through_AWS_IoT/images/aws_iot_temperature_circuit.jpg)
 
 ## Detailed instructions:  
    https://nerdyelectronics.com/iot/read-temperature-and-send-to-cloud-dynamodb-iot-project/
