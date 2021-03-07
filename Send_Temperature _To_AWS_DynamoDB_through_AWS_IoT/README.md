@@ -2,24 +2,29 @@
 
 Tutorial by https://nerdyelectronics.com:
 
-##Detailed instructions: 
+##Block Diagram:  
+
+![alt text](https://github.com/bhageria/nerdyelectronics/blob/master/Send_Temperature%20_To_AWS_DynamoDB_through_AWS_IoT/images/AWS_IoT_Temperature_circuit.png)
+
+##Circuit Diagram:  
+
+![alt text](https://github.com/bhageria/nerdyelectronics/blob/master/Send_Temperature%20_To_AWS_DynamoDB_through_AWS_IoT/images/block%20diagram.jpg)
+
+##Detailed instructions:  
    https://nerdyelectronics.com/iot/read-temperature-and-send-to-cloud-dynamodb-iot-project/
 
-##Explanation and instructions video - 
+##Explanation and instructions video:  
    https://www.youtube.com/watch?v=lA_iBwDZxsw
 
-##How to connect NodeMCU to AWS IoT
+##How to connect NodeMCU to AWS IoT  
    https://nerdyelectronics.com/iot/nodemcu-to-aws-iot-service/
    
-1)  AWS IoT - Create a Thing
-    https://nerdyelectronics.com/iot/how-to-create-a-thing-in-aws-iot/
-2)  Convert Certificates from .pem to .der format
-    https://nerdyelectronics.com/iot/how-to-convert-certificates-from-pem-to-der-format/
-3)  Connect NodeMCU to AWS IoT Core
-    https://nerdyelectronics.com/iot/how-to-connect-nodemcu-to-aws-iot-core/
+1)  [AWS IoT - Create a Thing](https://nerdyelectronics.com/iot/how-to-create-a-thing-in-aws-iot/)
+2)  [Convert Certificates from .pem to .der format](https://nerdyelectronics.com/iot/how-to-convert-certificates-from-pem-to-der-format/)
+3)  [Connect NodeMCU to AWS IoT Core](https://nerdyelectronics.com/iot/how-to-connect-nodemcu-to-aws-iot-core/)
 
-##Time keeping in IoT projects using NTP
-   https://nerdyelectronics.com/iot/esp8266/getting-time-from-internet-using-esp8266-ntp/	
+##Time keeping in IoT projects using NTP  
+   https://nerdyelectronics.com/iot/esp8266/getting-time-from-internet-using-esp8266-ntp/
 
 Do make sure to update the following lines:
 
