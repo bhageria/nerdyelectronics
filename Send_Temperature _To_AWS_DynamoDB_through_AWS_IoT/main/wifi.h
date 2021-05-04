@@ -8,10 +8,10 @@
 
 #include<arduino.h>
 
-const char* ssid = "xxxxxxx";   //Edit this line and put in your Wifi Name
-const char* password = "xxxxxxxxxxxxx";   //Edit this line and put in your Wifi Password
+const char* ssid = "Vivek";   //Edit this line and put in your Wifi Name
+const char* password = "Bhageria@7890";   //Edit this line and put in your Wifi Password
 
-const char* AWS_endpoint = "xxxxxxxxxxxxxxxxxxxxxx.iot.us-east-1.amazonaws.com"; // Edit your AWS Endpoint here
+const char* AWS_endpoint = "a3lux0sh4x6pp2-ats.iot.us-east-1.amazonaws.com"; // Edit your AWS Endpoint here
 
 void callback(char* topic, byte* payload, unsigned int length) ;
 void setup_wifi();
