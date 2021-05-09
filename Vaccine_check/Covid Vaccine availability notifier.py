@@ -1,3 +1,8 @@
+################################ Covid Vaccine availability notifier ###############################
+# Author - Vivek Bhageria
+# Posted on - https://nerdyelectronics.com
+# ##################################################################################################
+
 import requests
 import boto3
 from botocore.exceptions import ClientError
@@ -5,10 +10,10 @@ from datetime import date
 import json
 
 ####################################################################################################
-# Function Name - checkStatus()                                                                    #
-# Arguments - None                                                                                 #
-# Return type - String                                                                             #
-# Return - string with information of centers where vaccine is available                           #
+# Function Name - checkStatus()									   #
+# Arguments - None										   #
+# Return type - String										   #
+# Return - string with information of centers where vaccine is available			   #
 ####################################################################################################
 def checkStatus():
     today = date.today() #get today's date from system
@@ -39,11 +44,11 @@ def checkStatus():
 ################################### End of Funtion checkStatus() ###################################
 
 ####################################################################################################
-# Function Name - notify(string,string)                                                            #
+# Function Name - notify(string,string)								   #
 # Arguments - two arguments                                                                        #
 #     1. message - The body of the email                                                           #
-#     2. RECIPIENT - The recipient email ID                                                        #
-# Return type - None                                                                               #
+#     2. RECIPIENT - The recipient email ID							   #
+# Return type - None										   #
 ####################################################################################################
 def notify(message, RECIPIENT):
     CHARSET = "UTF-8"
