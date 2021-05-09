@@ -3,17 +3,17 @@
 # Posted on - https://nerdyelectronics.com
 # ##################################################################################################
 
-import requests
-import boto3
-from botocore.exceptions import ClientError
-from datetime import date
-import json
+import requests   # to send GET requests to the server
+import boto3      # for communication with AWS and send emails
+from botocore.exceptions import ClientError   # AWS communication errors
+from datetime import date  # to create the date string
+import json   #to parse the json response from server
 
 ####################################################################################################
-# Function Name - checkStatus()									   #
-# Arguments - None										   #
-# Return type - String										   #
-# Return - string with information of centers where vaccine is available			   #
+# Function Name - checkStatus()									                                   #
+# Arguments - None										                                           #
+# Return type - String										                                       #
+# Return - string with information of centers where vaccine is available			               #
 ####################################################################################################
 def checkStatus():
     today = date.today() #get today's date from system
@@ -27,28 +27,27 @@ def checkStatus():
     json_data=  data.json()
     message = ''
 
-###Loop through the data
-    for i in range(len(json_data['centers'])):
+###Loop through the data###
+    for i in range(len(json_data['centers'])): #loop for all centers
         center = 'center : ' + (json_data['centers'][i]['name']) + '<br />' + "District : " + json_data['centers'][i]['district_name'] + '<br />'+ 'address : ' + (json_data['centers'][i]['address'])
 
-        for j in range(len(json_data['centers'][i]['sessions'])):
-            capacity = json_data['centers'][i]['sessions'][j]['available_capacity']
-            minAge = json_data['centers'][i]['sessions'][j]['min_age_limit']
+        for j in range(len(json_data['centers'][i]['sessions'])):  #loop for all sessions in a center
+            capacity = json_data['centers'][i]['sessions'][j]['available_capacity'] #available capacity
+            minAge = json_data['centers'][i]['sessions'][j]['min_age_limit']  #minimum age limit for vaccination in this center session
 
 
-            if(capacity>=0 and minAge == 18):
+            if(capacity>0 and minAge == 18):  #add to message only if capacity is more than zero
                 available_date = json_data['centers'][i]['sessions'][j]['date']
                 message = message + center + "<br />"  + "Date : " + available_date + "<br />" + "Available Capacity : " + str(capacity) + "<br />" + "Minimum Age : " + str(minAge) + "<br /><br />"
-    print(message)
     return(message)
 ################################### End of Funtion checkStatus() ###################################
 
 ####################################################################################################
-# Function Name - notify(string,string)								   #
+# Function Name - notify(string,string)								                               #
 # Arguments - two arguments                                                                        #
 #     1. message - The body of the email                                                           #
-#     2. RECIPIENT - The recipient email ID							   #
-# Return type - None										   #
+#     2. RECIPIENT - The recipient email ID							                               #
+# Return type - None										                                       #
 ####################################################################################################
 def notify(message, RECIPIENT):
     CHARSET = "UTF-8"
@@ -93,11 +92,10 @@ def notify(message, RECIPIENT):
 ##################################### End of Function notify() #####################################
 		
 		
-RECIPIENT = "vixxxxxxxxxxxxx@gmail.com"	#Add the Recipient Email ID here
-SENDER = "vixxxxxxxxxxxxx@gmail.com"		#Add the Sender Email ID here
-AWS_REGION = "ap-south-1"
+RECIPIENT = "vixxxxxxxxxxxxx@gmail.com" # receivers email ID. Can be same as sender 
+SENDER = "vixxxxxxxxxxxxx@gmail.com" # sender email ID 
+AWS_REGION = "ap-south-1" #Region where the SES email ID is verified. For me it was Mumbai, hence "ap-south-1" 
 
-BODY_TEXT = ((checkStatus()))
-
-if(BODY_TEXT != ''):
-    notify(BODY_TEXT,RECIPIENT)
+BODY_TEXT = ((checkStatus())) # here we ping the server and get the status. The status is then stored in BODY_TEXT  
+if(BODY_TEXT != ''): # if BODY_TEXT is not empty means that there are some slots available. Notify only in that case 
+    notify(BODY_TEXT,RECIPIENT) # if slots available, notify
