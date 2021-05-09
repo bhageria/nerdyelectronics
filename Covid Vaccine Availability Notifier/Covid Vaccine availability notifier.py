@@ -1,6 +1,7 @@
 ################################ Covid Vaccine availability notifier ###############################
 # Author - Vivek Bhageria
 # Posted on - https://nerdyelectronics.com
+# Post link - https://nerdyelectronics.com/cloud/covid-vaccine-availability-notifier/
 # ##################################################################################################
 
 import requests   # to send GET requests to the server
@@ -10,10 +11,10 @@ from datetime import date  # to create the date string
 import json   #to parse the json response from server
 
 ####################################################################################################
-# Function Name - checkStatus()									                                   #
-# Arguments - None										                                           #
-# Return type - String										                                       #
-# Return - string with information of centers where vaccine is available			               #
+# Function Name - checkStatus() 
+# Arguments - None
+# Return type - String
+# Return - string with information of centers where vaccine is available
 ####################################################################################################
 def checkStatus():
     today = date.today() #get today's date from system
@@ -43,11 +44,11 @@ def checkStatus():
 ################################### End of Funtion checkStatus() ###################################
 
 ####################################################################################################
-# Function Name - notify(string,string)								                               #
-# Arguments - two arguments                                                                        #
-#     1. message - The body of the email                                                           #
-#     2. RECIPIENT - The recipient email ID							                               #
-# Return type - None										                                       #
+# Function Name - notify(string,string)
+# Arguments - two arguments
+#     1. message - The body of the email
+#     2. RECIPIENT - The recipient email ID
+# Return type - None
 ####################################################################################################
 def notify(message, RECIPIENT):
     CHARSET = "UTF-8"
